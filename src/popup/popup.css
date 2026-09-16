@@ -1,0 +1,269 @@
+:root {
+  color-scheme: light;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #111111;
+  background: #ffffff;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 372px;
+  margin: 0;
+  background: #ffffff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #e4002b;
+  outline-offset: 2px;
+}
+
+.masthead {
+  padding: 22px 22px 24px;
+  border-bottom: 1px solid #d7d7da;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand img {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.product-name,
+.section-label,
+.help-text,
+.status,
+.empty-state,
+.site-count {
+  margin: 0;
+}
+
+.product-name {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+h1 {
+  margin: 25px 0 0;
+  font-size: 29px;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+section {
+  padding: 21px 22px;
+  border-bottom: 1px solid #d7d7da;
+}
+
+.section-label {
+  color: #57575c;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.current-host {
+  margin: 10px 0 16px;
+  overflow: hidden;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.primary-button,
+.compact-button {
+  min-height: 42px;
+  border: 1px solid #e4002b;
+  border-radius: 0;
+  color: #ffffff;
+  background: #e4002b;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 10px 14px;
+}
+
+.primary-button:disabled {
+  cursor: not-allowed;
+  border-color: #d7d7da;
+  color: #57575c;
+  background: #f7f7f8;
+}
+
+.manual-site .section-label {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.input-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+input {
+  min-width: 0;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #8c8c91;
+  border-right: 0;
+  border-radius: 0;
+  color: #111111;
+  background: #ffffff;
+  font-size: 13px;
+}
+
+input::placeholder {
+  color: #717176;
+}
+
+.compact-button {
+  min-width: 92px;
+  padding: 0 12px;
+}
+
+.help-text {
+  margin-top: 9px;
+  color: #57575c;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.allowed-sites {
+  border-bottom: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #111111;
+}
+
+.site-count {
+  color: #57575c;
+  font-size: 11px;
+}
+
+.site-list {
+  max-height: 230px;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  counter-reset: sites;
+}
+
+.site-item {
+  display: grid;
+  grid-template-columns: 31px minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 47px;
+  border-bottom: 1px solid #d7d7da;
+  counter-increment: sites;
+}
+
+.site-item::before {
+  content: counter(sites, decimal-leading-zero);
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  border-right: 1px solid #d7d7da;
+  color: #e4002b;
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.site-name {
+  min-width: 0;
+  padding: 0 10px;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove-button {
+  padding: 10px 0 10px 12px;
+  border: 0;
+  color: #e4002b;
+  background: transparent;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.empty-state {
+  padding: 18px 0 2px;
+  color: #57575c;
+  font-size: 13px;
+}
+
+.status:not(:empty) {
+  margin: 0 22px 20px;
+  padding: 11px 12px;
+  border-left: 3px solid #e4002b;
+  color: #111111;
+  background: #f7f7f8;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.status[data-kind="error"]:not(:empty) {
+  color: #a00020;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .primary-button,
+  .compact-button,
+  .remove-button {
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+}
+
+.primary-button:not(:disabled):hover,
+.compact-button:hover {
+  color: #e4002b;
+  background: #ffffff;
+}
+
+.remove-button:hover {
+  color: #111111;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "cursor-em-tela-cheia",
+  "version": "1.2.2",
+  "private": true,
+  "description": "Extensão que oculta o cursor após quatro segundos de inatividade em players de tela cheia autorizados.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "check": "npm test && npm run build"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

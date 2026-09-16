@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ocultar Cursor em Tela Cheia</title>
+    <link rel="stylesheet" href="popup.css">
+  </head>
+  <body>
+    <main>
+      <header class="masthead">
+        <div class="brand">
+          <img src="../icons/icon-32.png" width="32" height="32" alt="">
+          <p class="product-name">Ocultar Cursor em Tela Cheia</p>
+        </div>
+        <h1>Sites autorizados</h1>
+      </header>
+
+      <section class="current-site" aria-labelledby="current-site-title">
+        <p id="current-site-title" class="section-label">Site atual</p>
+        <p id="current-host" class="current-host">Verificando…</p>
+        <button id="add-current" type="button" class="primary-button" disabled>
+          Adicionar site atual
+        </button>
+      </section>
+
+      <section class="manual-site" aria-labelledby="manual-site-title">
+        <p id="manual-site-title" class="section-label">Outro site</p>
+        <form id="add-form" novalidate>
+          <label for="site-input">Domínio ou link</label>
+          <div class="input-row">
+            <input
+              id="site-input"
+              name="site"
+              type="text"
+              inputmode="url"
+              autocomplete="url"
+              placeholder="disneyplus.com"
+              aria-describedby="input-help"
+            >
+            <button type="submit" class="compact-button">Adicionar</button>
+          </div>
+          <p id="input-help" class="help-text">O acesso vale para todo o domínio e seus subdomínios.</p>
+        </form>
+      </section>
+
+      <section class="allowed-sites" aria-labelledby="allowed-sites-title">
+        <div class="section-heading">
+          <p id="allowed-sites-title" class="section-label">Lista</p>
+          <span id="site-count" class="site-count">0 sites</span>
+        </div>
+        <ol id="site-list" class="site-list"></ol>
+        <p id="empty-state" class="empty-state">Nenhum site autorizado.</p>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="../lib/hosts.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
