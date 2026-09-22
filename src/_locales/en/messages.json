@@ -1,0 +1,141 @@
+{
+  "extensionName": {
+    "message": "Hide Cursor in Fullscreen",
+    "description": "Extension name."
+  },
+  "extensionShortName": {
+    "message": "Hide Cursor",
+    "description": "Short extension name."
+  },
+  "extensionDescription": {
+    "message": "Hides the cursor after four seconds of inactivity in fullscreen players on sites you authorize.",
+    "description": "Extension description."
+  },
+  "actionTitle": {
+    "message": "Configure sites",
+    "description": "Extension toolbar button tooltip."
+  },
+  "authorizedSitesTitle": {
+    "message": "Authorized sites"
+  },
+  "currentSiteLabel": {
+    "message": "Current site"
+  },
+  "checking": {
+    "message": "Checking…"
+  },
+  "addCurrentSite": {
+    "message": "Add current site"
+  },
+  "otherSiteLabel": {
+    "message": "Other site"
+  },
+  "siteInputLabel": {
+    "message": "Domain or link"
+  },
+  "siteInputPlaceholder": {
+    "message": "disneyplus.com"
+  },
+  "addButton": {
+    "message": "Add"
+  },
+  "inputHelp": {
+    "message": "Access applies to the entire domain and its subdomains."
+  },
+  "listLabel": {
+    "message": "List"
+  },
+  "siteCountOne": {
+    "message": "$COUNT$ site",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "1"
+      }
+    }
+  },
+  "siteCountMany": {
+    "message": "$COUNT$ sites",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "3"
+      }
+    }
+  },
+  "emptyState": {
+    "message": "No authorized sites."
+  },
+  "removeButton": {
+    "message": "Remove"
+  },
+  "removeHostAria": {
+    "message": "Remove $HOST$",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "currentSiteAdded": {
+    "message": "Site already added"
+  },
+  "pageNotSupported": {
+    "message": "Unsupported page"
+  },
+  "tabUnreadable": {
+    "message": "Could not read the tab"
+  },
+  "configLoadFailed": {
+    "message": "Could not load the configuration."
+  },
+  "errorDuplicateHost": {
+    "message": "This domain is already on the list."
+  },
+  "errorEmptyUrl": {
+    "message": "Enter a domain or link."
+  },
+  "errorInvalidUrl": {
+    "message": "Enter a valid domain or link."
+  },
+  "errorUnsupportedProtocol": {
+    "message": "Extensions cannot run on this page. Use an HTTP or HTTPS site."
+  },
+  "errorPermissionDenied": {
+    "message": "Permission for this domain was not granted."
+  },
+  "errorRegistrationFailed": {
+    "message": "The extension could not be enabled on this domain."
+  },
+  "errorInjectionFailed": {
+    "message": "The site was added. Reload the page to enable the extension."
+  },
+  "errorUnknown": {
+    "message": "Could not complete the action: $ERROR$",
+    "placeholders": {
+      "error": {
+        "content": "$1",
+        "example": "UNKNOWN_ERROR"
+      }
+    }
+  },
+  "hostAdded": {
+    "message": "$HOST$ was added.",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  },
+  "hostRemoved": {
+    "message": "$HOST$ was removed.",
+    "placeholders": {
+      "host": {
+        "content": "$1",
+        "example": "example.com"
+      }
+    }
+  }
+}

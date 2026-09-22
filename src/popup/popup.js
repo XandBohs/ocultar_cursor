@@ -2,6 +2,9 @@
   "use strict";
 
   const api = globalThis.browser ?? globalThis.chrome;
+  const i18n = CursorPopupI18n.createLocalizer(api.i18n, document);
+  i18n.localizeDocument();
+
   const elements = {
     addCurrent: document.getElementById("add-current"),
     currentHost: document.getElementById("current-host"),
@@ -22,23 +25,10 @@
     elements.status.dataset.kind = kind;
   }
 
-  function errorMessage(error) {
-    const messages = {
-      DUPLICATE_HOST: "Este domínio já está na lista.",
-      EMPTY_URL: "Digite um domínio ou link.",
-      INVALID_URL: "Digite um domínio ou link válido.",
-      UNSUPPORTED_PROTOCOL: "Esta página não aceita extensões. Use um site HTTP ou HTTPS.",
-      PERMISSION_DENIED: "A permissão para este domínio não foi concedida.",
-      REGISTRATION_FAILED: "Não foi possível ativar a extensão neste domínio.",
-      INJECTION_FAILED: "O site foi adicionado. Recarregue a página para ativar a extensão."
-    };
-    return messages[error.message] || `Não foi possível concluir a ação: ${error.message}`;
-  }
-
   function render() {
     elements.list.replaceChildren();
     elements.emptyState.hidden = allowedHosts.length > 0;
-    elements.siteCount.textContent = `${allowedHosts.length} ${allowedHosts.length === 1 ? "site" : "sites"}`;
+    elements.siteCount.textContent = i18n.countLabel(allowedHosts.length);
 
     allowedHosts.forEach((host) => {
       const item = document.createElement("li");
@@ -52,8 +42,8 @@
       const remove = document.createElement("button");
       remove.type = "button";
       remove.className = "remove-button";
-      remove.textContent = "Remover";
-      remove.setAttribute("aria-label", `Remover ${host}`);
+      remove.textContent = i18n.message("removeButton");
+      remove.setAttribute("aria-label", i18n.message("removeHostAria", host));
       remove.addEventListener("click", () => removeHost(host));
 
       item.append(name, remove);
@@ -62,7 +52,7 @@
 
     const currentAlreadyAdded = activeHost && allowedHosts.some((host) => CursorHosts.hostMatches(activeHost, host));
     elements.addCurrent.disabled = !activeHost || currentAlreadyAdded;
-    elements.addCurrent.textContent = currentAlreadyAdded ? "Site já adicionado" : "Adicionar site atual";
+    elements.addCurrent.textContent = i18n.message(currentAlreadyAdded ? "currentSiteAdded" : "addCurrentSite");
   }
 
   function sendMessage(message) {
@@ -119,12 +109,12 @@
       }
 
       elements.input.value = "";
-      setStatus(`${host} foi adicionado.`);
+      setStatus(i18n.message("hostAdded", host));
     } catch (error) {
       if (host && !saved) {
         await api.permissions.remove({ origins: CursorHosts.patternsForHost(host) }).catch(() => {});
       }
-      setStatus(errorMessage(error), "error");
+      setStatus(i18n.errorMessage(error), "error");
     }
   }
 
@@ -135,9 +125,9 @@
     try {
       await saveHosts(nextHosts);
       await api.permissions.remove({ origins: CursorHosts.patternsForHost(host) });
-      setStatus(`${host} foi removido.`);
+      setStatus(i18n.message("hostRemoved", host));
     } catch (error) {
-      setStatus(errorMessage(error), "error");
+      setStatus(i18n.errorMessage(error), "error");
     }
   }
 
@@ -156,7 +146,7 @@
       elements.currentHost.title = activeHost;
     } catch {
       activeHost = null;
-      elements.currentHost.textContent = "Página não compatível";
+      elements.currentHost.textContent = i18n.message("pageNotSupported");
     }
 
     render();
@@ -169,7 +159,7 @@
   });
 
   load().catch(() => {
-    elements.currentHost.textContent = "Não foi possível ler a aba";
-    setStatus("Não foi possível carregar a configuração.", "error");
+    elements.currentHost.textContent = i18n.message("tabUnreadable");
+    setStatus(i18n.message("configLoadFailed"), "error");
   });
 })();

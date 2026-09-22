@@ -1,9 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Ocultar Cursor em Tela Cheia",
-  "short_name": "Ocultar cursor",
+  "name": "__MSG_extensionName__",
+  "short_name": "__MSG_extensionShortName__",
   "version": "1.2.2",
-  "description": "Oculta o cursor após quatro segundos sem atividade em players de tela cheia nos sites que você autorizar.",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "permissions": [
     "activeTab",
     "scripting",
@@ -26,7 +27,7 @@
     "128": "icons/icon-128.png"
   },
   "action": {
-    "default_title": "Configurar sites",
+    "default_title": "__MSG_actionTitle__",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon-16.png",

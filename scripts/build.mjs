@@ -14,7 +14,7 @@ for (const target of targets) {
   const targetDirectory = path.join(outputDirectory, target);
   await mkdir(targetDirectory, { recursive: true });
 
-  for (const entry of ["background.js", "content.js", "main-world.js", "icons", "lib", "popup"]) {
+  for (const entry of ["_locales", "background.js", "content.js", "main-world.js", "icons", "lib", "popup"]) {
     await cp(path.join(sourceDirectory, entry), path.join(targetDirectory, entry), { recursive: true });
   }
 
