@@ -5,10 +5,17 @@
   "description": "Extensão que oculta o cursor após quatro segundos de inatividade em players de tela cheia autorizados.",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "screenshots": "node scripts/capture-store-screenshots.mjs",
     "test": "node --test",
     "check": "npm test && npm run build"
   },
+  "devDependencies": {
+    "playwright-core": "^1.55.1"
+  },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0"
   }
 }

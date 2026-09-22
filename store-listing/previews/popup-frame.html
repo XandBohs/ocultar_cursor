@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Store screenshot preview</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { width: 1280px; height: 800px; margin: 0; overflow: hidden; }
+      body {
+        position: relative;
+        font-family: Arial, sans-serif;
+        background:
+          radial-gradient(circle at 42% 45%, rgba(228, 0, 43, 0.28), transparent 32%),
+          linear-gradient(145deg, #17171a 0%, #080809 56%, #141416 100%);
+      }
+      .browser {
+        position: absolute;
+        inset: 28px;
+        overflow: hidden;
+        border: 1px solid #343438;
+        border-radius: 14px;
+        background: #080809;
+        box-shadow: 0 22px 70px rgba(0, 0, 0, 0.5);
+      }
+      .toolbar {
+        display: flex;
+        align-items: center;
+        height: 56px;
+        padding: 0 18px;
+        border-bottom: 1px solid #343438;
+        background: #222225;
+      }
+      .dots { display: flex; gap: 8px; margin-right: 22px; }
+      .dot { width: 11px; height: 11px; border-radius: 50%; background: #55555b; }
+      .dot:first-child { background: #e4002b; }
+      .address {
+        width: 520px;
+        padding: 9px 16px;
+        border-radius: 18px;
+        color: #c9c9cc;
+        background: #111113;
+        font-size: 13px;
+      }
+      .video {
+        position: absolute;
+        inset: 56px 0 0;
+        background:
+          linear-gradient(90deg, rgba(8, 8, 9, 0.15), rgba(8, 8, 9, 0.55)),
+          radial-gradient(ellipse at 38% 57%, rgba(255, 52, 83, 0.35), transparent 28%),
+          linear-gradient(160deg, #24242a, #09090b 56%, #18181c);
+      }
+      .video::before,
+      .video::after {
+        content: "";
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+      .video::before { inset: 9% 42% 13% 8%; }
+      .video::after { inset: 18% 51% 24% 17%; border-color: rgba(228, 0, 43, 0.45); }
+      .progress {
+        position: absolute;
+        right: 470px;
+        bottom: 62px;
+        left: 70px;
+        height: 3px;
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .progress::before { content: ""; display: block; width: 61%; height: 100%; background: #e4002b; }
+      .popup {
+        position: absolute;
+        top: 78px;
+        right: 52px;
+        width: 374px;
+        height: 650px;
+        border: 1px solid #d7d7da;
+        background: #ffffff;
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.48);
+      }
+      iframe { display: block; width: 372px; height: 648px; border: 0; background: #fff; }
+    </style>
+  </head>
+  <body>
+    <div class="browser">
+      <div class="toolbar">
+        <div class="dots" aria-hidden="true"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="address">https://video.example/watch</div>
+      </div>
+      <div class="video"></div>
+      <div class="progress"></div>
+      <div class="popup"><iframe id="popup" title="Extension popup"></iframe></div>
+    </div>
+    <script>
+      const locale = new URLSearchParams(location.search).get("locale") || "en";
+      document.documentElement.lang = locale.replace("_", "-");
+      document.getElementById("popup").src = `../../src/popup/popup.html?locale=${encodeURIComponent(locale)}`;
+    </script>
+  </body>
+</html>
