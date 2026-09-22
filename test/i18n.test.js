@@ -60,6 +60,16 @@ test("manifests usam inglês como padrão e referenciam mensagens existentes", (
   }
 });
 
+test("manifest do Firefox declara que não coleta nem transmite dados", () => {
+  const manifest = readJson(sourceDirectory, "manifests", "firefox.json");
+
+  assert.equal(manifest.browser_specific_settings.gecko.id, "ocultar-cursor@xandbohs.github.io");
+  assert.deepEqual(
+    manifest.browser_specific_settings.gecko.data_collection_permissions,
+    { required: ["none"] }
+  );
+});
+
 test("localiza textos estáticos, idioma e placeholder do popup", () => {
   const catalog = readJson(sourceDirectory, "_locales", "pt_BR", "messages.json");
   const textElement = { dataset: { i18n: "authorizedSitesTitle" }, textContent: "" };
